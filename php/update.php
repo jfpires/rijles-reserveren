@@ -85,7 +85,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                 header("location: ../admin.index.php");
                 exit();
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "Oeps, er is iets mis gegaam.";
             }
         }
 
@@ -132,7 +132,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                 }
 
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Oeps er is iets mis gegaam.";
             }
         }
 
