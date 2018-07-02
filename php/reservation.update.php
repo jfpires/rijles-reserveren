@@ -39,7 +39,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                 header("location: ../reservation.php");
                 exit();
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "Er is iets mis gegaan. Probeer het straks weer.";
             }
         }
 
@@ -69,7 +69,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                 $result = $stmt->get_result();
 
                 if($result->num_rows == 1){
-                    /* Fetch result row as an associative array. Since the result set contains only one row, we don't need to use while loop */
+                    /* Fetch result row as an associative array.
+                    Only one row, so no need to use while loop */
                     $row = $result->fetch_array(MYSQLI_ASSOC);
 
                     // Retrieve individual field value
@@ -82,7 +83,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                 }
 
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Er is iets mis gegaan. Probeer het straks weer.";
             }
         }
 

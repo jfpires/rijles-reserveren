@@ -33,7 +33,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             }
 
         } else{
-            echo "Oops! Something went wrong. Please try again later.";
+            echo "Er is iets mis gegaan. Probeer straks opnieuw.";
         }
     }
 

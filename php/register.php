@@ -132,7 +132,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Redirect to login page
                 header("location: ../students.loginpage.php");
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "Er is iets mis gegegaan. Probeer het straks opnieuw.";
             }
         }
 
