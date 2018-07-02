@@ -4,8 +4,8 @@ require_once 'config.php';
 
 
 // Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = "";
+$username = $password = ""; //for the correct data
+$username_err = $password_err = ""; // for error messages
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             save the username to the session */
                             session_start();
                             $_SESSION['username'] = $username;
-                            header("location: students.welcome.php");
+                            header("location: students.welcome.php"); // send to welcome page
                         } else{
                             // Display an error message if password is not valid
                             $password_err = ' Wachtwoord is niet correct';
@@ -62,6 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username_err = 'Gebruikersnaam bestaat niet.';
                 }
             } else{
+                // Send error message
                 echo "Er is iets mis gegaan";
             }
         }

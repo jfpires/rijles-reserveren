@@ -21,25 +21,24 @@ include ROOT_PATH . '/php/includes/header.php';
             <div class="panel-heading">
                 <div class="panel-title">Admin login</div>
             </div>
+            <!--This is the form for the admnin login-->
             <div style="padding-top:30px" class="panel-body" >
                 <form id="loginform" class="form-horizontal" role="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <!--Input fields-->
                     <div style="margin-bottom: 25px" class="input-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>" >
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i><?php echo $username_err; ?></span>
                         <input id="login-username" type="text" class="form-control" name="username" value="<?php echo $username; ?>" placeholder="Gebruikersnaam">
                     </div>
-
                     <div style="margin-bottom: 25px" class="input-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i><?php echo $password_err; ?></span>
                         <input id="login-password" type="password" class="form-control" name="password" placeholder="Wachtwoord">
                     </div>
-
+                    <!-- Submit button -->
                     <div style="margin-top:10px" class="form-group">
-                        <!-- Button -->
                         <div class="col-sm-12 controls">
                             <input type="submit" class="btn btn-primary" value="Login">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-md-12 control">
                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >

@@ -12,10 +12,9 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 $fName = htmlspecialchars($_SESSION['username']);
 
 // If someone, that's not the admin, try's to log in, send to error
-if($fName != 'Admin'){ //TODO while loop voor more admins
+if($fName != 'Admin'){ //TODO: loop voor more admins
     header("location: php/error.php");
 }
-
 
 ?>
 <!doctype html>
