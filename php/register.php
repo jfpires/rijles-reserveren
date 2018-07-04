@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate username
     if(empty(trim($_POST["username"]))){
-        $username_err = " Geef een gebruikersnaam a.u.b.";
+        $username_err = " Vul een gebruikersnaam in";
     } else{
         // Prepare a select statement
         $sql = "SELECT id FROM students WHERE username = ?";
@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate password
     if(empty(trim($_POST['password']))){
-        $password_err = " Voer een wachtwoord in.";
+        $password_err = " Vul een wachtwoord in";
     } elseif(strlen(trim($_POST['password'])) < 6){
         $password_err = "Het wachtwoord moet tenminste 6 tekens bevatten.";
     } else{
@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $firstName_err = " Vul een voornaam in";
         //safety, so limit chars
     } elseif(!filter_var(trim($_POST["first_name"]), FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z'-.\s ]+$/")))){
-        $firstName_err = 'vul een geldige naam in a.u.b.';
+        $firstName_err = 'Vul een geldige naam in';
     } else{
         $firstName = trim($_POST["first_name"]);
     }
@@ -76,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $lastName_err = " Vul een achternaam in";
         //safety, so limit chars
     } elseif(!filter_var(trim($_POST["last_name"]), FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z'-.\s ]+$/")))){
-        $lastName_err = 'vul een geldige naam in a.u.b.';
+        $lastName_err = 'Vul een geldige naam in.';
     } else{
         $lastName = trim($_POST["last_name"]);
     }
@@ -100,10 +100,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty(trim($_POST["phone_number"]))){
-        $phoneNumber_err = " Vul een telefoonnummer in a.u.b.";
+        $phoneNumber_err = " Vul een telefoonnummer in";
         //only numbers
     } elseif(!ctype_digit(trim($_POST["phone_number"]))){
-        $phoneNumber_err = ' Vul een geldige telefoonnummer in. Gebruik alleen getallen en geen spaties.';
+        $phoneNumber_err = ' Vul een geldige telefoonnummer in';
     } else{
         $phoneNumber = trim($_POST["phone_number"]);
     }
