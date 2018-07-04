@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate username
     if(empty(trim($_POST["username"]))){
-        $username_err = "Geef een gebruikersnaam a.u.b.";
+        $username_err = " Geef een gebruikersnaam a.u.b.";
     } else{
         // Prepare a select statement
         $sql = "SELECT id FROM students WHERE username = ?";
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $stmt->store_result();
 
                 if($stmt->num_rows == 1){
-                    $username_err = "Gebruikersnaam bestaat al";
+                    $username_err = " Gebruikersnaam bestaat al";
                 } else{
                     $username = trim($_POST["username"]);
                 }
@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate password
     if(empty(trim($_POST['password']))){
-        $password_err = "Voer een wachtwoord in.";
+        $password_err = " Voer een wachtwoord in.";
     } elseif(strlen(trim($_POST['password'])) < 6){
         $password_err = "Het wachtwoord moet tenminste 6 tekens bevatten.";
     } else{
@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Confirm password
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = 'Valideer je wachtwoord a.u.b';
+        $confirm_password_err = ' Valideer je wachtwoord';
     } else{
         $confirm_password = trim($_POST['confirm_password']);
         if($password != $confirm_password){
@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     // Validate de rest
     if(empty(trim($_POST["first_name"]))){
-        $firstName_err = "Vul een naam in a.u.b.";
+        $firstName_err = " Vul een voornaam in";
         //safety, so limit chars
     } elseif(!filter_var(trim($_POST["first_name"]), FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z'-.\s ]+$/")))){
         $firstName_err = 'vul een geldige naam in a.u.b.';
@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty(trim($_POST["last_name"]))){
-        $lastName_err = "Vul een naam in a.u.b.";
+        $lastName_err = " Vul een achternaam in";
         //safety, so limit chars
     } elseif(!filter_var(trim($_POST["last_name"]), FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z'-.\s ]+$/")))){
         $lastName_err = 'vul een geldige naam in a.u.b.';
@@ -82,28 +82,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty(trim($_POST["address"]))){
-        $adrs_err = 'Vul een adres in a.u.b.';
+        $adrs_err = ' Vul een adres in';
     } else{
         $adrs = trim($_POST["address"]);
     }
 
     if(empty(trim($_POST["city"]))){
-        $cty_err = 'Vul een adres in a.u.b.';
+        $cty_err = ' Vul een stad in';
     } else{
         $cty = trim($_POST["city"]);
     }
 
     if(empty(trim($_POST["postal_code"]))){
-        $postalCode_err = 'Vul een adres in a.u.b.';
+        $postalCode_err = ' Vul een postcode in';
     } else{
         $postalCode = trim($_POST["postal_code"]);
     }
 
     if(empty(trim($_POST["phone_number"]))){
-        $phoneNumber_err = "Vul een telefoonnummer in a.u.b.";
+        $phoneNumber_err = " Vul een telefoonnummer in a.u.b.";
         //only numbers
     } elseif(!ctype_digit(trim($_POST["phone_number"]))){
-        $phoneNumber_err = 'Vul een geldige telefoonnummer in a.u.b. Gebruik alleen getallen en geen spaties.';
+        $phoneNumber_err = ' Vul een geldige telefoonnummer in. Gebruik alleen getallen en geen spaties.';
     } else{
         $phoneNumber = trim($_POST["phone_number"]);
     }
