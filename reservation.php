@@ -20,7 +20,7 @@ include ROOT_PATH . '/php/includes/header.php';
     <div style="margin-top:50px;" class="mainbox col-md-auto">
         <div class="panel" >
             <div class="panel-heading">
-                <div class="panel-title">Leerlingen</div>
+                <div class="panel-title">Reserveren</div>
             </div>
             <div style="padding-top:30px" class="panel-body" >
                 <?php

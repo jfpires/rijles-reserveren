@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php
 // Include config file
 require_once 'config.php';
@@ -44,9 +46,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate password
     if(empty(trim($_POST['password']))){
-        $password_err = "Please enter a password.";
+        $password_err = "Voer een wachtwoord in.";
     } elseif(strlen(trim($_POST['password'])) < 6){
-        $password_err = "Het wachtwoord moet tenminste 6 characters bevatten.";
+        $password_err = "Het wachtwoord moet tenminste 6 tekens bevatten.";
     } else{
         $password = trim($_POST['password']);
     }
@@ -109,6 +111,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($firstName_err)
         && empty($adrs_err) && empty($phoneNumber_err) && empty($lastName_err) && empty($cty_err) && empty($postalCode_err)){
+
+        //captcha check
+        include_once $_SERVER['DOCUMENT_ROOT'] . '/securimage/securimage.php';
+        $securimage = new Securimage();
+        if ($securimage->check($_POST['captcha_code']) == false) {
+            // the code was incorrect
+            // you should handle the error so that the form processor doesn't continue
+
+            // or you can use the following code if there is no validation or you do not know how
+            echo "The security code entered was incorrect.<br /><br />";
+            echo "Please go <a href='javascript:history.go(-1)'>back</a> and try again.";
+            exit;
+        }
 
         // Prepare an insert statement
         $sqlCreate = "INSERT INTO students (username, password, first_name, last_name, address, city, postal_code, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -200,6 +215,13 @@ include ROOT_PATH . '/php/includes/header.php';
                     <div style="margin-bottom: 25px" class="input-group <?php echo (!empty($phoneNumber_err)) ? 'has-error' : ''; ?>">
                         <span class="input-group-addon"><?php echo $phoneNumber_err; ?></span>
                         <input id="login-password" type="text" class="form-control" name="phone_number" value="<?php echo $phoneNumber; ?>" placeholder="Telefoonnummer">
+                    </div>
+                    <!--captcha image-->
+                    <div>
+                        <p>Type de tekst op de afbeelding</p>
+                        <img id="captcha" src="../securimage/securimage_show.php" alt="CAPTCHA Image"/>
+                        <input type="text" name="captcha_code" size="10" maxlength="6"/>
+                        <a href="#" onclick="document.getElementById('captcha').src = '../securimage/securimage_show.php?' + Math.random(); return false">[ Andere Afbeelding ]</a>
                     </div>
                     <!-- Buttons -->
                     <div style="margin-top:10px" class="form-group">

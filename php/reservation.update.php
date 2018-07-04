@@ -119,7 +119,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h2>Update Record</h2>
+                    <h2>Reserveren</h2>
                 </div>
                 <p>Voeg je naam toe om een les te reserveren</p>
                 <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">

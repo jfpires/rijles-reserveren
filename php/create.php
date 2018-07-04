@@ -13,11 +13,11 @@ $sqlInsert = "INSERT INTO students (username, first_name, last_name, address, ph
 
 if($stmt = $db->prepare($sqlInsert)) {
     // Bind variables to the prepared statement as parameters
-    $stmt->bind_param("sssssss", $username, $firstName, $lastName, $adrs, $phoneNumber, $postalCode, $cty);
+    $stmt->bind_param("sssssss", $userName, $firstName, $lastName, $adrs, $phoneNumber, $postalCode, $cty);
 
     // Set parameters
     if (isset($_POST['submit'])) {
-        $username = $db->real_escape_string($_POST['username']);
+        $userName = $db->real_escape_string($_POST['username']);
         $firstName = $db->real_escape_string($_POST['first_name']);
         $lastName = $db->real_escape_string($_POST['last_name']);
         $adrs = $db->real_escape_string($_POST['address']);
